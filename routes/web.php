@@ -3,7 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
-
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\ViewController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ProfessorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,66 +19,42 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
-Route::get('/', function () {
-    Cache::flush();
-    if (Cache::has('auth_token')) {
-        $data = [
-        'auth_token' => Cache::get('auth_token'),
-        'role' => Cache::get('role'),
-        'user_id' => Cache::get('user_id'),
-        ];
-        return view('home', ['auth_data' => $data]);
-    }else{
-        return view('login', ['auth_data' => null]);
-    }
-});
+Route::get('/', [AuthenticationController::class, 'verifyAuthenticationHome'])
+->name("home");
 
-Route::post('/login', function (Request $request) {
+Route::post('/login', [AuthenticationController::class, 'login'])
+->name("login");
 
-    $validatedData = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
+Route::get('/logout', [AuthenticationController::class, 'logout'])
+->name("logout");
 
-    $response = Http::post('http://127.0.0.1:8000/api/login', [
-        'email' => $validatedData['email'],
-        'password' => $validatedData['password'],
-    ]);
+Route::get('manage-assignments', [ProfessorController::class, 'getAssignments'])
+->name("manage-assignments");
 
-    if ($response->ok()) {
-        $data = $response->json();
-        Cache::forever('auth_token', $data['auth_token']);
-        Cache::forever('role', $data['role']);
-        Cache::forever('user_id', $data['user_id']);
-        return view('home', ['auth_data' => $data]);
-    } else {
-        dd('Login failed, please try again');
-    }
-})->name('login');
+Route::get('edit-assignment', [ProfessorController::class, 'editAssignment'])
+->name("edit-assignment");
 
-Route::get('manage-assignments', function() {
+Route::get('create-assignment', [ProfessorController::class, 'createAssignment'])
+->name("create-assignment");
 
-});
+Route::get('delete-assignment', [ProfessorController::class, 'deleteAssignment'])
+->name("delete-assignment");
 
-Route::get('edit-assignment', function() {
+Route::get('view-assignment', [ProfessorController::class, 'viewAssignment'])
+->name("view-assignment");
 
-});
+Route::get('view-assignment-student', [StudentController::class, 'viewAssignmentStudent'])
+->name("view-assignment-student");
 
-Route::get('create-assignment', function() {
+Route::get('view-assignments', [ProfessorController::class, 'viewAssignments'])
+->name("view-assignments");
 
-});
+Route::get('view-submissions', [ProfessorController::class, 'viewsubmissions'])
+->name("view-submissions");
 
-Route::get('delete-assignment', function() {
+Route::get('view-submission', [ProfessorController::class, 'viewsubmission'])
+->name("view-submission");
 
-});
+// Route::get('submit-assignment', function() {
 
-Route::get('view-assignment', function() {
-
-});
-
-Route::get('submit-assignment', function() {
-
-});
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// });
