@@ -57,9 +57,6 @@
                 </div>
             </div>
         </div>
-        <!-- <p>API Key = {{ $auth_data['auth_token'] }}</p>
-        <p>Role = {{ $auth_data['role'] }}</p>
-        <p>Id = {{ $auth_data['user_id'] }}</p> -->
     @else
         <script>
         window.location.href = "{{ route('login') }}";

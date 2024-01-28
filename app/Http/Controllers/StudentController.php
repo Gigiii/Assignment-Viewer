@@ -40,13 +40,26 @@ class StudentController extends Controller
     }
 
 
-    public function createSubmission(){
+    public function createSubmissionForm(){
         $data = $this->checkAuthentication();
-        if ($data != null && $data["role"] == "Student") {
-            // Write createSubmission() code here
+        if ($data != null && $data['role'] == 'Student') {
+            // Write createAssignment() code here
+            return view('student/create-submission', ['auth_data' => $data]);
+
         }else{
             return view('login', ['auth_data' => null]);
-        }
+        } 
+    }
+
+    public function createSubmission(){
+        $data = $this->checkAuthentication();
+        if ($data != null && $data['role'] == 'Student') {
+            // Write data insertion into API code here
+            return view('student/create-submission', ['auth_data' => $data]);
+
+        }else{
+            return view('login', ['auth_data' => null]);
+        } 
     }
 
 }

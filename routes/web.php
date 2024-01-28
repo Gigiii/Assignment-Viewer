@@ -34,8 +34,23 @@ Route::get('manage-assignments', [ProfessorController::class, 'getAssignments'])
 Route::get('edit-assignment', [ProfessorController::class, 'editAssignment'])
 ->name("edit-assignment");
 
-Route::get('create-assignment', [ProfessorController::class, 'createAssignment'])
+Route::get('create-assignment-form', [ProfessorController::class, 'createAssignmentForm'])
+->name("create-assignment-form");
+
+Route::post('create-assignment', [ProfessorController::class, 'createAssignment'])
 ->name("create-assignment");
+
+Route::get('create-submission-form', [StudentController::class, 'createSubmissionForm'])
+->name("create-submission-form");
+
+Route::post('create-submission', [StudentController::class, 'createSubmission'])
+->name("create-submission");
+
+Route::patch('edit-assignment-form', [ProfessorController::class, 'editAssignmentForm'])
+->name("edit-assignment-form");
+
+Route::patch('edit-assignment', [ProfessorController::class, 'editAssignment'])
+->name("edit-assignment");
 
 Route::get('delete-assignment', [ProfessorController::class, 'deleteAssignment'])
 ->name("delete-assignment");
@@ -46,7 +61,7 @@ Route::get('view-assignment', [ProfessorController::class, 'viewAssignment'])
 Route::get('view-assignment-student', [StudentController::class, 'viewAssignmentStudent'])
 ->name("view-assignment-student");
 
-Route::get('view-assignments', [ProfessorController::class, 'viewAssignments'])
+Route::get('view-assignments', [StudentController::class, 'viewAssignments'])
 ->name("view-assignments");
 
 Route::get('view-submissions', [ProfessorController::class, 'viewsubmissions'])

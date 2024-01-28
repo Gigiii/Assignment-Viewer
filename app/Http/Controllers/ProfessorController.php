@@ -70,7 +70,7 @@ class ProfessorController extends Controller
         }
     }
 
-    public function createAssignment(){
+    public function createAssignmentForm(){
         $data = $this->checkAuthentication();
         if ($data != null && $data['role'] == 'Professor') {
             // Write createAssignment() code here
@@ -81,10 +81,35 @@ class ProfessorController extends Controller
         } 
     }
 
-    public function editAssignment(){
+    public function createAssignment(){
+        $data = $this->checkAuthentication();
+        if ($data != null && $data['role'] == 'Professor') {
+            // Write data insertion into API code here
+            return view('professor/create-assignment', ['auth_data' => $data]);
+
+        }else{
+            return view('login', ['auth_data' => null]);
+        } 
+    }
+
+
+    public function editAssignmentForm(){
         $data = $this->checkAuthentication();
         if ($data != null && $data['role'] == 'Professor') {
             // Write editAssignment() code here
+            return view('professor/edit-assignment', ['auth_data' => $data]);
+
+        }else{
+            return view('login', ['auth_data' => null]);
+        } 
+    }
+
+    public function editAssignment(){
+        $data = $this->checkAuthentication();
+        if ($data != null && $data['role'] == 'Professor') {
+            // Write data insertion into API code here
+            return view('professor/edit-assignment', ['auth_data' => $data]);
+
         }else{
             return view('login', ['auth_data' => null]);
         } 

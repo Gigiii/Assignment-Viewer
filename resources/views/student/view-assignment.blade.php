@@ -37,7 +37,9 @@
 
 
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 d-flex flex-column">
+                    <div class="d-flex flex-column" style="height: 100%;">
+
                 <div class="row flex-row justify-content-between mb-3">
                     <div class="col-md-4">
                         <span class="fs-2">Assignment Name</span>
@@ -51,18 +53,16 @@
                 <div class="col-md-10">
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet quibusdam earum, quae velit eum doloribus accusamus qui quos sapiente vel?</p>
                 </div>
-                <div class="col-12 py-3 text-end">
-                <form method="get" class="col-md-6 d-inline-block text-end" action="{{ route('create-submission') }}">
+                <div class="col-12 py-3 text-end mt-auto">
+                <!-- make sure he hasn't submitted already -->
+                <form method="get" class="col-md-6 d-inline-block text-end" action=" {{ route('create-submission-form') }} ">
                     @csrf
                     <input type="hidden" name="assignment_id" value="1">
-                    <button type="submit" class="btn btn-dark py-2 fs-5" style="width:50%;">Create Submission</button>
+                    <button type="submit" class="btn btn-dark py-2 fs-5" style="width:50%;">Upload Work</button>
                 </form>
                 </div>
             </div>
         </div>
-        <!-- <p>API Key = {{ $auth_data['auth_token'] }}</p>
-        <p>Role = {{ $auth_data['role'] }}</p>
-        <p>Id = {{ $auth_data['user_id'] }}</p> -->
     @else
         <script>
         window.location.href = "{{ route('login') }}";

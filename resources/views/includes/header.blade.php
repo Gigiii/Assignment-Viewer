@@ -14,7 +14,7 @@
       <a class="nav-link text-secondary me-2" aria-current="page" href="/">Homepage</a>
       <a class="nav-link text-secondary " aria-current="page" href="/manage-assignments">Assignments</a>
       <span class="navbar-text ms-auto mr-2 text-light pe-3 fs-4">
-        {{ $auth_data['name'] }}
+        {{ $auth_data['role'] }}: {{ $auth_data['name'] }}
       </span>
       <form method="get" action="{{ route('logout') }}">
         @csrf

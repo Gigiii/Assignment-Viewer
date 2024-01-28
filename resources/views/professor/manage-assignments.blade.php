@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-6 col-sm-12 text-end">
 
-                <form method="get" action="{{ route('create-assignment') }}">
+                <form method="get" action="{{ route('create-assignment-form') }}">
                     @csrf
                     <input type="hidden" name="assignment_id" value="1">
                     <button type="submit" class="btn btn-secondary py-3 fs-5" style="width:50%;">Create New Assignment</button>
@@ -50,9 +50,6 @@
 
 
         </div>
-        <!-- <p>API Key = {{ $auth_data['auth_token'] }}</p>
-        <p>Role = {{ $auth_data['role'] }}</p>
-        <p>Id = {{ $auth_data['user_id'] }}</p> -->
     @else
         <script>
         window.location.href = "{{ route('login') }}";

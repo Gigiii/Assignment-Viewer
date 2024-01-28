@@ -4,7 +4,7 @@
     @if ($auth_data != Null)
     <div class="row flex-row justify-content-between mb-4">
         <div class="col-md-4">
-            <span class="fs-2">Create New Assignment</span>
+            <span class="fs-2">Edit Assignment</span>
         </div>
         <form method="get" class="col-md-4 d-inline-block text-end" action="{{ route('manage-assignments') }}">
         @csrf
@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <form method="post" action="{{ route('create-assignment') }}">
+                    <form method="post" action="{{ route('edit-assignment') }}">
                         @csrf
                         <div class="col-md-5 py-2">
                         <p class="fw-light fs-5 mb-1">Title*</p>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="text-end pt-5">
-                        <button type="submit" class="btn btn-dark py-3 px-5 fs-4">Create</button>
+                        <button type="submit" class="btn btn-dark py-3 px-5 fs-4">Edit</button>
                         </div>
                     </div>
                 </div>
