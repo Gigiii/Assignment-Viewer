@@ -61,6 +61,7 @@
                 @if ( $assignment_data['submission_count'] > 0)
                 <form method="get" class="col-md-6 d-inline-block text-end" action="{{ route('view-submissions') }}">
                     @csrf
+                    <input type="hidden" name="max_grade" value="{{ $assignment_data["assignment"]["maxGrade"] }}">
                     <input type="hidden" name="course_id" value="{{ $course_id }}">
                     <input type="hidden" name="course_name" value="{{ $course_name }}">
                     <input type="hidden" name="submission_count" value="{{ $assignment_data['submission_count']}}">

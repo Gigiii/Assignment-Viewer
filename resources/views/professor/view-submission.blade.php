@@ -19,8 +19,9 @@
                         <input type="hidden" name="submission_count" value="{{ $submission_count }}">
                         <input type="hidden" name="student_count" value="{{ $student_count }}">    
                         <input type="hidden" name="photo_location" value="{{ $photo_location }}">
+                        <input type="hidden" name="max_grade" value="{{ $max_grade }}">
                         <label for="grade">Grade Amount:</label>
-                        <input type="numbers" name="grade" id="grade" placeholder="{{ $submission_data["grade"]}}" class="d-inline-block" style="width:20%;">
+                        <input type="number" name="grade" id="grade" placeholder="{{ $submission_data["grade"] . '/' . $max_grade }}" max="{{ $max_grade }}" min="0" class="d-inline-block" style="width:20%;">
                         <button type="submit" class="btn btn-dark" style="width:20%;">Edit</button>
                     </form>
                 </div>
@@ -64,6 +65,7 @@
                     <input type="hidden" name="assignment_id" value="{{ $submission_data["assignmentId"] }}">
                     <input type="hidden" name="assignment_name" value="{{ $assignment_name }}">    
                     <input type="hidden" name="photo_location" value="{{ $photo_location }}">
+                    <input type="hidden" name="max_grade" value="{{ $max_grade }}">
                     <button type="submit" class="btn btn-secondary py-2 fs-5" style="width:50%;">< Go Back</button>
                     </form>
                 </div>

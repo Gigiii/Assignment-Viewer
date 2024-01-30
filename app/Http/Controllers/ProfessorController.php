@@ -82,6 +82,7 @@ class ProfessorController extends Controller
                     'course_id' => $request->course_id,
                     'photo_location' => $request->photo_location,
                     'assignment_name' => $request->assignment_name,
+                    'max_grade' => $request->max_grade,
                 ]);
             }else{
                 return $response;
@@ -109,7 +110,8 @@ class ProfessorController extends Controller
                     'student_count' => $request->student_count,
                     'photo_location' => $request->photo_location,
                     'course_name' => $request->course_name,
-                    'course_id' => $request->course_id
+                    'course_id' => $request->course_id,
+                    'max_grade' => $request->max_grade,
                 ]);
             }else{
                 return $response;
@@ -133,7 +135,8 @@ class ProfessorController extends Controller
                     'submission_count' => $request->submission_count,
                     'photo_location' => $request->photo_location,
                     'course_name' => $request->course_name,
-                    'course_id' => $request->course_id
+                    'course_id' => $request->course_id,
+                    'max_grade' => $request->max_grade,
                 ]);
             }else{
                 return $response;

@@ -15,6 +15,7 @@
             <input type="hidden" name="course_name" value="{{ $course_name }}">
             <input type="hidden" name="assignment_name" value="{{ $assignment_name }}">
             <input type="hidden" name="assignment_id" value="{{ $submissions_data[0]['assignmentId'] }}">
+            <input type="hidden" name="max_grade" value="{{ $max_grade }}">
             <button type="submit" class="btn btn-secondary py-2 fs-5" style="width:25%;">< Go Back</button>
             </form>
         </div>
@@ -37,6 +38,7 @@
                             <input type="hidden" name="assignment_id" value="{{ $submission['assignmentId'] }}">
                             <input type="hidden" name="submission_id" value=" {{ $submission['id'] }}">
                             <input type="hidden" name="photo_location" value="{{ $photo_location }}">
+                            <input type="hidden" name="max_grade" value="{{ $max_grade }}">
                             <button type="submit" class="btn btn-secondary" style="width:50%;">View Submission</button>
                         </form>
                     </div>
