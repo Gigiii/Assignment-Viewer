@@ -2,3 +2,13 @@
     background-color: #CCCCCC;
     border-radius: 15px;
   }
+
+  @media (max-width: 576px) {
+    .responsive-btn {
+      width: 100% !important;
+    }
+    
+    .responsive-center-text {
+      text-align: center!important;
+    }
+  }

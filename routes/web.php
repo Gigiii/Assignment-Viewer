@@ -46,14 +46,20 @@ Route::get('create-submission-form', [StudentController::class, 'createSubmissio
 Route::post('create-submission', [StudentController::class, 'createSubmission'])
 ->name("create-submission");
 
-Route::patch('edit-assignment-form', [ProfessorController::class, 'editAssignmentForm'])
+Route::patch('grade-submission', [ProfessorController::class, 'changeGrade'])
+->name("grade-submission");
+
+Route::get('edit-assignment-form', [ProfessorController::class, 'editAssignmentForm'])
 ->name("edit-assignment-form");
 
 Route::patch('edit-assignment', [ProfessorController::class, 'editAssignment'])
 ->name("edit-assignment");
 
-Route::get('delete-assignment', [ProfessorController::class, 'deleteAssignment'])
+Route::delete('delete-assignment', [ProfessorController::class, 'deleteAssignment'])
 ->name("delete-assignment");
+
+Route::delete('delete-attachment', [ProfessorController::class, 'deleteAssignmentAttachment'])
+->name("delete-attachment");
 
 Route::get('view-assignment', [ProfessorController::class, 'viewAssignment'])
 ->name("view-assignment");
@@ -70,6 +76,3 @@ Route::get('view-submissions', [ProfessorController::class, 'viewsubmissions'])
 Route::get('view-submission', [ProfessorController::class, 'viewsubmission'])
 ->name("view-submission");
 
-// Route::get('submit-assignment', function() {
-
-// });

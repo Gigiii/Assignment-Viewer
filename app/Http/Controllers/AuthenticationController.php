@@ -26,13 +26,27 @@ class AuthenticationController extends Controller
     public function verifyAuthenticationHome(){
         $data = $this->checkAuthentication();
         if ($data != null) {
-            if ($data['role'] == 'Professor'){
-                return view('professor/home', ['auth_data' => $data]);
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $data['auth_token'],
+            ])->get('http://127.0.0.1:8000/api/course/showCourses/' . Cache::get('user_id'));
+            if ($response->ok()) {
+                $course_data = $response->json();
+                if ($data['role'] == 'Professor') {
+                    return view('professor/home', [
+                        'auth_data' => $data,
+                        'course_data' => $course_data
+                    ]);
+                }else{
+                    return view('student/home', [
+                        'auth_data' => $data,
+                        'course_data' => $course_data,
+                    ]);
+                }
             }else{
-                return view('student/home', ['auth_data' => $data]);
+                return $response;
             }
         }else{
-            return view('login', ['auth_data' => null]);
+            return view('login', ['auth_data' => null, 'course_data' => null]);
         }
     }
 
